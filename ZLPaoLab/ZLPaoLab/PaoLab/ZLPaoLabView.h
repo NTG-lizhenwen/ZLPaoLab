@@ -33,6 +33,8 @@
 -(void)beganAnimation;
 //停止动画
 -(void)stopAnimation;
+//移除动画
+-(void)remAnimation;
 
 - (void)zl_addAttributeTapActionWithStrings:(NSArray <NSString *> *)strings
                                  tapClicked:(void (^) (NSString *string , NSRange range , NSInteger index))tapClick;
