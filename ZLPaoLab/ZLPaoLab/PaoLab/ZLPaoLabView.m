@@ -227,7 +227,7 @@
 -(void)beganAnimation
 {
     //如果动画正在进行，且不能进行动画
-    if (isMonkeying||isMonkey) {
+    if (isMonkeying||!isMonkey) {
         return;
     }
     isMonkeying=YES;
@@ -237,7 +237,7 @@
 //停止动画
 -(void)stopAnimation
 {   //如果动画已经停止或者不能进行动画
-    if (!isMonkeying||isMonkey) {
+    if (!isMonkeying||!isMonkey) {
         return;
     }
     isMonkeying=NO;
@@ -252,6 +252,7 @@
 
 - (void)toAnimation
 {
+    isMonkeying=YES;
     [UIView animateWithDuration:pao1.frame.size.width/40.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         //让两个label向左平移
         self->pao1.transform = CGAffineTransformMakeTranslation(-self->pao1.frame.size.width, 0);
@@ -263,7 +264,7 @@
         self->pao2.frame = CGRectMake(self->pao1.frame.size.width, self->pao2.frame.origin.y, self->pao2.frame.size.width, self->pao2.frame.size.height);
         
         //如果是可以动画的
-        if (isMonkey) {
+        if (self->isMonkey) {
             //递归调用
             [self toAnimation];
         }
